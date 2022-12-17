@@ -1,9 +1,11 @@
 import React,{useContext,useRef} from 'react';
+import { useHistory } from 'react-router-dom';
 import AuthContext from '../Store/Auth-context';
 import classes from './ProfileForm.module.css';
 
 
 const ProfileForm = () => {
+  const history = useHistory();
   const passwordInputRef =  useRef();
   const  authCtx= useContext(AuthContext);
   const submitHandler = event =>{
@@ -25,6 +27,7 @@ const ProfileForm = () => {
       }
     ).then(response =>{
        // assumption always succeed
+       history.replace('/')
     });
   }
 
